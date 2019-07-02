@@ -11,13 +11,13 @@
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['organos']">Organos</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="isAuthenticated">
                 <a class="nav-link" [routerLink]="['expediente']">Expediente</a>
             </li>
         </ul>
         <span class="navbar-text">
-            <button type="button" (click)="login()" *ngIf="!isAuthenticated" class="btn btn-outline-primary">Log In</button>
-            <button type="button" (click)="logout()" *ngIf="isAuthenticated" class="btn btn-outline-primary">Log Out</button>
+            <button type="button" (click)="login()" *ngIf="!isAuthenticated" class="btn btn-sm btn-outline-primary" [disabled]="this.auth0Client === undefined">Ingresar</button>
+            <button type="button" (click)="logout()" *ngIf="isAuthenticated" class="btn btn-sm btn-outline-primary">Salir</button>
         </span>
     </div>
 </nav>
